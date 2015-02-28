@@ -33,6 +33,10 @@ doesn't have to be stateful anymore, as its data comes in its props.
 
 ## API
 
+- [Dispatcher](#dispatcher)
+- [Store](#store)
+- [StoreReceiver](#storereceiver)
+
 ### Dispatcher
 
 #### const dispatcher = new Dispatcher()
@@ -74,7 +78,7 @@ class MyComponent extends Component {
 }
 ```
 
-### store
+### Store
 
 #### class MyStore extends Store { … }
 
