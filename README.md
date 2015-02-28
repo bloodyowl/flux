@@ -230,4 +230,33 @@ class ReactComponentClass extends Component {
 }
 ```
 
+## adding the dispatcher in a react component's context
+
+you need a parent component to add the dispatcher to your react components :
+
+```javascript
+import React, {Component} from "react"
+import Dispatcher from "./Dispatcher"
+
+// create your app's dispatcher
+// and register some stores
+const dispatcher = new Dispatcher()
+
+class App extends Component {
+  static childContextTypes = {
+    ...Dispatcher.getContextType()
+  }
+  getChildContext() {
+    return {
+      dispatcher
+    }
+  }
+  render() {
+    // return your component here
+  }
+}
+
+React.render(<App />, mountNode)
+```
+
 ## [license](LICENSE)
