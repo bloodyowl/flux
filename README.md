@@ -284,7 +284,9 @@ const stores = [
   "PostStore",
   "AuthorStore",
 ]
-const initialData = <App component={InitialData} stores={stores} />
+const initialData = React.renderToStaticMarkup(
+  <App component={InitialData} stores={stores} />
+)
 ```
 
 ## adding the dispatcher in a react component's context
