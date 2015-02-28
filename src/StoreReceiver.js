@@ -40,7 +40,8 @@ export default (ComposedComponent) => {
   }
 
   const stores = ComposedComponent.stores
-  const initialState = Object.keys(stores).reduce((acc, key) => {
+  const initialState = Object.keys(stores).reduce(
+    (acc, key) => {
       acc[stores[key]] = null
       return acc
     },
