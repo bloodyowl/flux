@@ -36,6 +36,7 @@ doesn't have to be stateful anymore, as its data comes in its props.
 - [Dispatcher](#dispatcher)
 - [Store](#store)
 - [StoreReceiver](#storereceiver)
+- [InitialData](#initialdata)
 
 ### Dispatcher
 
@@ -232,6 +233,58 @@ class ReactComponentClass extends Component {
     )
   }
 }
+```
+
+### InitialData
+
+the `InitialData` react component is a component that is meant to be used
+with the `renderToStaticMarkup` react method on the server, to export data
+from the store in `<script>` tags with `text/json` type (so that the browser
+doesn't try to execute the JSON code).
+
+the stores, when initialized, try to find a `<script>` tag with a
+`data-storename` attribute with their `displayName` as value.
+
+#### prop stores
+
+just pass the stores `displayNames` you want in an array passed to the `stores`
+prop.
+
+> `InitialData` **must** have the current `dispatcher` instance in its
+> context.
+
+```javascript
+import React, {Component} from "react"
+import Dispatcher from "./Dispatcher"
+import InitialData from "./InitialData"
+
+const dispatcher = new Dispatcher()
+
+// …
+
+class App extends Component {
+  static childContextTypes = {
+    ...Dispatcher.getContextType()
+  }
+
+  getChildContext() {
+    return {
+      dispatcher
+    }
+  }
+
+  render() {
+    return (
+      <this.props.component {...this.props} />
+    )
+  }
+}
+
+const stores = [
+  "PostStore",
+  "AuthorStore",
+]
+const initialData = <App component={InitialData} stores={stores} />
 ```
 
 ## adding the dispatcher in a react component's context
