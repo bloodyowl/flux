@@ -9,12 +9,12 @@ class InitialData extends Component {
   }
 
   state = {
-    isMounted : false
+    isMounted : false,
   }
 
   componentDidMount() {
     this.setState({
-      isMounted : true
+      isMounted : true,
     })
   }
 
