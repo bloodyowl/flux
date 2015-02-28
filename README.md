@@ -19,7 +19,7 @@ implementation this is done through the react components' `context`.
 
 here, actions creators are just simple functions without the dispatcher as
 dependency, they just return the action object, and you need to explicitely
-use `dispatcher.dispatcher(actionCreator(params))`. this enables us to easily
+use `dispatcher.dispatch(actionCreator(params))`. this enables us to easily
 test them, and to avoid an extra dependency that makes it difficult to work
 with both the server and the client.
 
