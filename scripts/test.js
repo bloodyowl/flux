@@ -12,6 +12,7 @@ function buildTests(cb) {
       var temp = fs.createWriteStream(
         path.resolve(__dirname, "../.tmp/test.js")
       )
+      temp.write("require(\"es5-shim\")" + os.EOL)
       var entry = files.forEach(function(file) {
         temp.write("require(\"" + file + "\")" + os.EOL)
       })
