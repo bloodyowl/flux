@@ -7,7 +7,4 @@ launch_in_dev:
   - firefox
 
 launch_in_ci:
-  - firefox
-  - safari
   - chrome
-  - internet explorer
