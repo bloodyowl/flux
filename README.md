@@ -2,6 +2,8 @@
 
 > a server & client-side friendly implementation of flux
 
+[![Build Status](https://travis-ci.org/bloodyowl/flux.svg)](https://travis-ci.org/bloodyowl/flux)
+
 **bloody-flux** is a server & client-friendly implementation of the
 [flux architecture](https://facebook.github.io/flux).
 
