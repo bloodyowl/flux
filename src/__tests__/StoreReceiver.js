@@ -1,4 +1,4 @@
-import React, {Component} from "react/addons"
+import React, {Component} from "react"
 import tape from "tape"
 
 import StoreReceiver from "../StoreReceiver"

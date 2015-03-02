@@ -8,14 +8,13 @@ const config = {
   progress : true,
 
   entry : {
-    index : [
-      "./src/index",
+    test : [
+      "./webpack.test.js",
     ],
   },
+
   output : {
     path : path.resolve(__dirname, "dist"),
-    library : "Flux",
-    libraryTarget : "umd",
     filename : "[name].js",
   },
 
@@ -46,16 +45,10 @@ const config = {
     ],
   },
 
-  externals: [
-    {
-      "react": {
-        root: "React",
-        commonjs2: "react",
-        commonjs: "react",
-        amd: "react"
-      }
-    }
-  ],
+  node : {
+    // tape …
+    fs : "empty",
+  },
 }
 
 module.exports = config

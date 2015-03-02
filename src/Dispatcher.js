@@ -1,5 +1,5 @@
 import {Dispatcher as FluxDispatcher} from "flux"
-import React, {PropTypes} from "react/addons"
+import React, {PropTypes} from "react"
 
 class Dispatcher extends FluxDispatcher {
 

@@ -2,20 +2,19 @@ require("babel/register")
 
 var webpack = require("webpack")
 var config = require("../webpack.config")
+var testConfig = require("../webpack.test.config")
 
-var buildTests = require("./test")
+webpack(testConfig, function(err, stats) {
+  if(err) {
+    throw err
+  }
+  console.log("[tests] build!")
+})
 
-buildTests(function() {
-  console.log("[tests] built!")
-  webpack(config, function(err, stats) {
-    if(err) {
-      try {
-        throw err
-      }
-      finally {
-        process.exit(1)
-      }
-    }
-    console.log(stats.toString())
-  })
+webpack(config, function(err, stats) {
+  if(err) {
+    throw err
+  }
+  console.log("[lib] built!")
+  console.log(stats.toString())
 })

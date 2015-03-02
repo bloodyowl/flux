@@ -3,7 +3,7 @@ import Dispatcher from "../Dispatcher"
 import Store from "../Store"
 
 import tape from "tape"
-import React, {Component} from "react/addons"
+import React, {Component} from "react"
 
 tape("InitialData", (test) => {
 
