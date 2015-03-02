@@ -1,4 +1,6 @@
 import path from "path"
+import webpack from "webpack"
+import { version as __VERSION__ } from "./package.json"
 
 const config = {
 
@@ -26,6 +28,12 @@ const config = {
       ".js",
     ],
   },
+
+  plugins : [
+    new webpack.DefinePlugin({
+      __VERSION__ : `"${__VERSION__}"`,
+    })
+  ],
 
   module : {
     loaders : [

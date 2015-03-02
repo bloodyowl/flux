@@ -8,4 +8,5 @@ export default {
   Dispatcher,
   StoreReceiver,
   InitialData,
+  version : __VERSION__,
 }
