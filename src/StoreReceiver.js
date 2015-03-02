@@ -51,7 +51,7 @@ export default (ComposedComponent) => {
   return class StoreReceiver extends Component {
 
     static contextTypes = {
-      dispatcher : PropTypes.instanceOf(Dispatcher),
+      ...Dispatcher.getContextType(),
     }
 
     state = initialState
