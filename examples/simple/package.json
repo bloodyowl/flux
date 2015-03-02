@@ -1,0 +1,22 @@
+{
+  "name": "bloody-flux-examples",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "prestart": "rm -fr dist/",
+    "start": "node scripts/build && node server/entry",
+    "test": "exit 0"
+  },
+  "author": "bloodyowl",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "^4.6.5",
+    "babel-core": "^4.6.5",
+    "babel-loader": "^4.0.0",
+    "babel-runtime": "^4.6.5",
+    "bloody-domready": "^0.1.1",
+    "bloody-keymirror": "^1.0.0",
+    "webpack": "^1.6.0"
+  }
+}
