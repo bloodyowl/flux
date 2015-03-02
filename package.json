@@ -1,10 +1,8 @@
 {
   "name": "bloody-flux",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a server & client-side friendly implementation of flux",
-  "main": [
-    "dist/index.js"
-  ],
+  "main": "index.js",
   "scripts": {
     "prestart": "node ./scripts/clean",
     "start": "node ./scripts/build",
@@ -22,7 +20,7 @@
     "server",
     "client"
   ],
-  "files": [
+  "files" : [
     "README.md",
     "LICENSE",
     "dist/index.js"
