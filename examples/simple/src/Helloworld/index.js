@@ -90,7 +90,7 @@ const styles = {
     },
     pressed : {
       background : "#036",
-    }
+    },
   },
 }
 
