@@ -2,13 +2,15 @@
   "name": "bloody-flux",
   "version": "1.0.1",
   "description": "a server & client-side friendly implementation of flux",
-  "main": "index.js",
+  "main": [
+    "dist/index.js"
+  ],
   "scripts": {
     "prestart": "node ./scripts/clean",
     "start": "node ./scripts/build",
     "localtest": "npm start && testem",
-    "test": "npm start && testem ci",
-    "bump" : "npm test && npm publish"
+    "test": "npm start && zuul -- ./dist/test.js",
+    "bump": "npm test && npm publish"
   },
   "repository": {
     "type": "git",
@@ -20,10 +22,7 @@
     "server",
     "client"
   ],
-  "main" : [
-    "dist/index.js"
-  ],
-  "files" : [
+  "files": [
     "README.md",
     "LICENSE",
     "dist/index.js"
@@ -48,7 +47,8 @@
     "rimraf": "^2.2.8",
     "tape": "^3.5.0",
     "testem": "^0.7.1",
-    "webpack": "^1.6.0"
+    "webpack": "^1.6.0",
+    "zuul": "^2.0.0"
   },
   "peerDependencies": {
     "react": "^0.13.x"
