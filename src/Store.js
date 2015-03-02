@@ -8,7 +8,7 @@ export default class Store {
   // used to keep the change listeners
   listeners = new Set()
 
-  constructor(dispatcher) {
+  constructor() {
     this.reactions = this.getActionHandlers()
     this.dispatcher = null
     this.dispatchToken = null
