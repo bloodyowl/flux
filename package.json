@@ -1,6 +1,6 @@
 {
   "name": "bloody-flux",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a server & client-side friendly implementation of flux",
   "main": "index.js",
   "scripts": {
