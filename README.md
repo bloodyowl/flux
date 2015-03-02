@@ -7,6 +7,25 @@
 **bloody-flux** is a server & client-friendly implementation of the
 [flux architecture](https://facebook.github.io/flux).
 
+## install
+
+```console
+$ npm install bloody-flux --save
+```
+
+## require
+
+```javascript
+// ES6 module syntax
+import { Dispatcher, Store, StoreReceiver, InitialData } from "bloody-flux"
+// commonjs + ES6
+var { Dispatcher, Store, StoreReceiver, InitialData } = require("bloody-flux")
+// commonjs + ES5
+var Flux = require("bloody-flux")
+var Dispatcher = Flux.Dispatcher
+// …
+```
+
 ## design choices
 
 in order to be able to render components on the server, the singleton pattern
