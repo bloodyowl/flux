@@ -50,6 +50,8 @@ export default (ComposedComponent) => {
 
   return class StoreReceiver extends Component {
 
+    static component = ComposedComponent
+
     static contextTypes = {
       ...Dispatcher.getContextType(),
     }
