@@ -44,6 +44,12 @@ tape("StoreReceiver", (test) => {
     }
   })
 
+  test.equal(
+    typeof TestComponent.component,
+    "function",
+    "passes component in statics"
+  )
+
   class Store1 extends Store {
     static displayName = "Store1"
     state = {
