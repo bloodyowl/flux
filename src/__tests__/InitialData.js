@@ -46,7 +46,11 @@ tape("InitialData", (test) => {
     rendered,
     `<div hidden>` +
       `<script type="text/json" data-storename="TestStore">` +
-        JSON.stringify(dispatcher.getStore("TestStore").state) +
+        JSON.stringify({
+          state : dispatcher.getStore("TestStore").state,
+          params : null,
+          query : null,
+        }) +
       `</script>` +
     `</div>`
   )

@@ -3,6 +3,23 @@ const canUseDOM = (
   typeof document.querySelector == "function"
 )
 
+function isEqual(left, right) {
+  // both null case
+  if(left === right) {
+    return true
+  }
+  if(left && !right) {
+    return false
+  }
+  let key
+  for(key in left) {
+    if(left[key] !== right[key]) {
+      return false
+    }
+  }
+  return true
+}
+
 export default class Store {
 
   // used to keep the change listeners
@@ -27,10 +44,34 @@ export default class Store {
       if(!node) {
         return
       }
-      this.state = JSON.parse(node.innerHTML)
+      const initialData = JSON.parse(node.innerHTML)
+      this.state = initialData.state
+      this.params = initialData.params
+      this.query = initialData.query
       // remove the script after we took the data from it
       node.parentNode.removeChild(node)
     }
+  }
+
+  /**
+   * returns whether the stores is hydrated or not
+   *
+   * useful to see if there is a necessary request or not for params
+   * extracted from react-router
+   *
+   * @param {Object} params
+   * @param {Object} query
+   */
+  hasInitialData(params, query) {
+    if(!this.params) {
+      return false
+    }
+    return (
+      isEqual(this.params, params) &&
+      isEqual(params, this.params) &&
+      isEqual(this.query, query) &&
+      isEqual(query, this.query)
+    )
   }
 
   /**
@@ -56,6 +97,7 @@ export default class Store {
       ...prevState,
       ...nextState,
     }
+    this.hasInitialData = () => false
     if(this.shouldStoreEmitChange(prevState, this.state)) {
       this.emitChange()
     }

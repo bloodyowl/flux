@@ -84,7 +84,11 @@ tape("Store initialData", (test) => {
   script.type = "text/json"
   script.setAttribute("data-storename", "TestStore")
   script.innerHTML = JSON.stringify({
-    foo : "bar",
+    state : {
+      foo : "bar",
+    },
+    params : null,
+    query : null,
   })
   document.body.appendChild(script)
   class TestStore extends Store {
@@ -93,5 +97,34 @@ tape("Store initialData", (test) => {
   const testStore = new TestStore()
   test.deepEqual(testStore.state, {foo : "bar"}, "gets initial data")
   test.equal(script.parentNode, null, "script is removed")
+  test.end()
+})
+
+tape("Store initialData params", (test) => {
+  const script = document.createElement("script")
+  script.type = "text/json"
+  script.setAttribute("data-storename", "TestStore")
+  script.innerHTML = JSON.stringify({
+    state : {
+      foo : "bar",
+    },
+    params : {
+      param1 : true,
+    },
+    query : {
+      query1 : true,
+    }
+  })
+  document.body.appendChild(script)
+  class TestStore extends Store {
+    static displayName = "TestStore"
+  }
+  const testStore = new TestStore()
+  test.deepEqual(testStore.state, {foo : "bar"}, "gets initial data")
+  test.equal(testStore.hasInitialData({param1 : true}, {query1: true}), true)
+  testStore.setState({
+    bar : "baz"
+  })
+  test.equal(testStore.hasInitialData({param1 : true}, {query1 : true}), false)
   test.end()
 })
