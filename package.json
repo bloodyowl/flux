@@ -20,7 +20,7 @@
     "server",
     "client"
   ],
-  "files" : [
+  "files": [
     "README.md",
     "LICENSE",
     "dist/index.js"
@@ -41,6 +41,7 @@
     "es5-shim": "^4.1.0",
     "glob": "^4.4.1",
     "mkdirp": "^0.5.0",
+    "object-assign": "^2.0.0",
     "react": "^0.13.0",
     "rimraf": "^2.2.8",
     "tape": "^3.5.0",
