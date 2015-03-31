@@ -48,13 +48,7 @@ export default (ComposedComponent) => {
     {}
   )
 
-  return class StoreReceiver extends Component {
-
-    static component = ComposedComponent
-
-    static contextTypes = {
-      ...Dispatcher.getContextType(),
-    }
+  class StoreReceiver extends Component {
 
     state = initialState
 
@@ -111,4 +105,17 @@ export default (ComposedComponent) => {
       )
     }
   }
+
+  const contextTypes = {
+    contextTypes: Dispatcher.getContextType(),
+  }
+
+  Object.assign(
+    StoreReceiver,
+    ComposedComponent,
+    contextTypes
+  )
+
+  return StoreReceiver
+
 }

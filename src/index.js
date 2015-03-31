@@ -7,6 +7,8 @@ export default {
   Store,
   Dispatcher,
   StoreReceiver,
+  // for linters
+  storeReceiver: StoreReceiver,
   InitialData,
   version : __VERSION__,
 }

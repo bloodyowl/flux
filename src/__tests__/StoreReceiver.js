@@ -1,4 +1,4 @@
-import React, {Component} from "react"
+import React, {Component, PropTypes} from "react"
 import tape from "tape"
 
 import StoreReceiver from "../StoreReceiver"
@@ -14,9 +14,16 @@ tape("StoreReceiver", (test) => {
       Store2 : "store_2",
     }
 
+    static contextTypes = {
+      foo : PropTypes.string,
+    }
+
+    static foo = "bar"
+
     componentDidMount() {
       test.deepEqual(this.props.store_1, store1.state)
       test.deepEqual(this.props.store_2, store2.state)
+      test.equal(this.context.foo, "helloworld", "child gets context")
       setTimeout(() => {
         store2.setState({
           bar : "test!",
@@ -45,9 +52,9 @@ tape("StoreReceiver", (test) => {
   })
 
   test.equal(
-    typeof TestComponent.component,
-    "function",
-    "passes component in statics"
+    TestComponent.foo,
+    "bar",
+    "copies component statics"
   )
 
   class Store1 extends Store {
@@ -70,12 +77,14 @@ tape("StoreReceiver", (test) => {
 
   class App extends Component {
     static childContextTypes = {
-      ...Dispatcher.getContextType()
+      ...Dispatcher.getContextType(),
+      foo: PropTypes.string,
     }
 
     getChildContext() {
       return {
         dispatcher : dispatcher,
+        foo: "helloworld",
       }
     }
 
