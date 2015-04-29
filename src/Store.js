@@ -67,6 +67,7 @@ export default class Store {
    * @param {Object} nextState
    */
   replaceState(nextState) {
+    const prevState = this.state
     this.state = {
       ...nextState
     }
