@@ -145,6 +145,10 @@ class MyStore extends Store {
 like react's `setState`, this method merges `nextState` with `this.state` in a
 new object, and emits a change event.
 
+#### replaceState(nextState)
+
+replaces the state by nextState, and emits a change event.
+
 #### shouldEmitChange(prevState, nextState)
 
 a method you can optionally define for a better performance if you send too
