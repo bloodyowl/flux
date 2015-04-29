@@ -62,6 +62,20 @@ export default class Store {
   }
 
   /**
+   * replaces the state by `nextState`
+   *
+   * @param {Object} nextState
+   */
+  replaceState(nextState) {
+    this.state = {
+      ...nextState
+    }
+    if(this.shouldStoreEmitChange(prevState, this.state)) {
+      this.emitChange()
+    }
+  }
+
+  /**
    * lets the user define from `prevState` & `nextState` if the store
    * should emit a change event. by default `true` is always returned
    *
